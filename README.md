@@ -19,6 +19,9 @@ Usage: thingy \[OPTIONS\]
      -H hostname               Hostname to connect to
 """)
 
+相邻的两个或多个 字符串字面值 （引号引起来的字符）将会自动连接到一起，把很长的字符串拆开分别输入的时候尤其有用。只能对两个字面值这样操作，变量或表达式不行，如果你想连接变量，或者连接变量和字面值，可以用 + 号:
 
-
+'Py' 'thon'
+text = ('Put several strings within parentheses '
+        'to have them joined together.')
 
