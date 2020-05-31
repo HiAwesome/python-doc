@@ -64,4 +64,16 @@ Usage: thingy [OPTIONS]
 'on'
 ```
 
+使用过大的索引会产生一个错误，但是，切片中的越界索引会被自动处理:
 
+```python
+>>> word[42]  # the word only has 6 characters
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: string index out of range
+
+>>> word[4:42]
+'on'
+>>> word[42:]
+''
+```
