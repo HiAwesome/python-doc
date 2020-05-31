@@ -25,3 +25,14 @@ Usage: thingy \[OPTIONS\]
 text = ('Put several strings within parentheses '
         'to have them joined together.')
 
+字符串是可以被 索引 （下标访问）的，第一个字符索引是 0。单个字符并没有特殊的类型，只是一个长度为一的字符串:
+
+word = 'Python'
+word\[0\]
+word\[5\]
+
+
+
+
+
+
