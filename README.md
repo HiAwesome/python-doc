@@ -174,9 +174,33 @@ range() 所返回的对象在许多方面表现得像一个列表，但实际上
 [0, 1, 2, 3]
 ```
 
+### 4.4 break 和 continue 语句，以及循环中的 else 子句 
 
+循环语句可能带有 else 子句；它会在循环耗尽了可迭代对象 (使用 for) 或循环条件变为假值 (使用 while) 时被执行，但不会在循环被 break 语句终止时被执行。 以下搜索素数的循环就是这样的一个例子:\
 
+```python
+>>> for n in range(2, 10):
+...     for x in range(2, n):
+...         if n % x == 0:
+...             print(n, 'equals', x, '*', n//x)
+...             break
+...     else:
+...         # loop fell through without finding a factor
+...         print(n, 'is a prime number')
+...
+2 is a prime number
+3 is a prime number
+4 equals 2 * 2
+5 is a prime number
+6 equals 2 * 3
+7 is a prime number
+8 equals 2 * 4
+9 equals 3 * 3
+```
 
+（是的，这是正确的代码。仔细看： else 子句属于 for 循环， 不属于 if 语句。）
+
+当和循环一起使用时，else 子句与 try 语句中的 else 子句的共同点多于 if 语句中的同类子句: try 语句中的 else 子句会在未发生异常时执行，而循环中的 else 子句则会在未发生 break 时执行。
 
 
 
