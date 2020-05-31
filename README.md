@@ -203,17 +203,31 @@ range() 所返回的对象在许多方面表现得像一个列表，但实际上
 当和循环一起使用时，else 子句与 try 语句中的 else 子句的共同点多于 if 语句中的同类子句: try 语句中的 else 子句会在未发生异常时执行，而循环中的 else 子句则会在未发生 break 时执行。
 
 
+## 4.5 pass 语句
 
+pass 语句什么也不做。当语法上需要一个语句，但程序需要什么动作也不做时，可以使用它。例如:
 
+```python
+>>> while True:
+...     pass  # Busy-wait for keyboard interrupt (Ctrl+C)
+...
+```
 
+这通常用于创建最小的类:
 
+```python
+>>> class MyEmptyClass:
+...     pass
+...
+```
 
+pass 的另一个可以使用的场合是在你编写新的代码时作为一个函数或条件子句体的占位符，允许你保持在更抽象的层次上进行思考。 pass 会被静默地忽略:
 
-
-
-
-
-
+```python
+>>> def initlog(*args):
+...     pass   # Remember to implement this!
+...
+```
 
 
 
