@@ -117,7 +117,25 @@ IndexError: string index out of range
 []
 ```
 
+### 3.2 走向编程的第一步
 
+交互式命令行里，当一个组合的语句输入时, 需要在最后敲一个空白行表示完成（因为语法分析器猜不出来你什么时候打的是最后一行）。
+
+```python
+... # the sum of two elements defines the next
+... a, b = 0, 1
+>>> while a < 10:
+...     print(a)
+...     a, b = b, a+b
+...
+0
+1
+1
+2
+3
+5
+8
+```
 
 
 
