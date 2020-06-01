@@ -668,19 +668,61 @@ SyntaxError: invalid syntax
 ['3.1', '3.14', '3.142', '3.1416', '3.14159']
 ```
 
+### 5.1.4 嵌套的列表推导式
 
+列表推导式中的初始表达式可以是任何表达式，包括另一个列表推导式。
 
+考虑下面这个 3x4的矩阵，它由3个长度为4的列表组成
 
+```python
+>>> matrix = [
+...     [1, 2, 3, 4],
+...     [5, 6, 7, 8],
+...     [9, 10, 11, 12],
+... ]
+```
 
+下面的列表推导式将交换其行和列
 
+```python
+>>> [[row[i] for row in matrix] for i in range(4)]
+[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
+```
 
+如上节所示，嵌套的列表推导式是基于跟随其后的 for 进行求值的，所以这个例子等价于:
 
+```python
+>>> transposed = []
+>>> for i in range(4):
+...     transposed.append([row[i] for row in matrix])
+...
+>>> transposed
+[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
+```
 
+反过来说，也等价于
 
+```python
+>>> transposed = []
+>>> for i in range(4):
+...     # the following 3 lines implement the nested listcomp
+...     transposed_row = []
+...     for row in matrix:
+...         transposed_row.append(row[i])
+...     transposed.append(transposed_row)
+...
+>>> transposed
+[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
+```
 
+实际应用中，你应该会更喜欢使用内置函数去组成复杂的流程语句。 [zip()](https://docs.python.org/zh-cn/3/library/functions.html#zip) 函数将会很好地处理这种情况
 
+```python
+>>> list(zip(*matrix))
+[(1, 5, 9), (2, 6, 10), (3, 7, 11), (4, 8, 12)]
+```
 
-
+关于本行中星号的详细说明，参见 [解包参数列表](https://docs.python.org/zh-cn/3/tutorial/controlflow.html#tut-unpacking-arguments) 。
 
 
 
