@@ -1323,13 +1323,72 @@ x = spam
 y = eggs
 ```
 
+### 8.6 定义清理操作
 
+try 语句有另一个可选子句，用于定义必须在所有情况下执行的清理操作。例如:
 
+```python
+>>> try:
+...     raise KeyboardInterrupt
+... finally:
+...     print('Goodbye, world!')
+...
+Goodbye, world!
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+```
 
+如果存在 finally 子句，则 finally 子句将作为 try 语句结束前的最后一项任务被执行。 finally 子句不论 try 语句是否产生了异常都会被执行。 以下几点讨论了当异常发生时一些更复杂的情况：
 
+1. 如果在执行 try 子句期间发生了异常，该异常可由一个 except 子句进行处理。 如果异常没有被某个 except 子句所处理，则该异常会在 finally 子句执行之后被重新引发。
+2. 异常也可能在 except 或 else 子句执行期间发生。 同样地，该异常会在 finally 子句执行之后被重新引发。
+3. 如果在执行 try 语句时遇到一个 break, continue 或 return 语句，则 finally 子句将在执行 break, continue 或 return 语句之前被执行。
+4. 如果 finally 子句中包含一个 return 语句，则返回值将来自 finally 子句的某个 return 语句的返回值，而非来自 try 子句的 return 语句的返回值。
 
+例如
 
+```python
+def bool_return():
+    try:
+        return True
+    finally:
+        return False
 
+bool_return()
+False
+```
+
+一个更为复杂的例子:
+
+```python
+>>> def divide(x, y):
+...     try:
+...         result = x / y
+...     except ZeroDivisionError:
+...         print("division by zero!")
+...     else:
+...         print("result is", result)
+...     finally:
+...         print("executing finally clause")
+...
+>>> divide(2, 1)
+result is 2.0
+executing finally clause
+>>> divide(2, 0)
+division by zero!
+executing finally clause
+>>> divide("2", "1")
+executing finally clause
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 3, in divide
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+```
+
+正如你所看到的，finally 子句在任何情况下都会被执行。 两个字符串相除所引发的 TypeError 不会由 except 子句处理，因此会在 finally 子句执行后被重新引发。
+
+在实际应用程序中，finally 子句对于释放外部资源（例如文件或者网络连接）非常有用，无论是否成功使用资源。
 
 
 
