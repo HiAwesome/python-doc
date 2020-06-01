@@ -1076,15 +1076,26 @@ sys.path 变量是一个字符串列表，用于确定解释器的模块搜索�
 >>> sys.path.append('/ufs/guido/lib/python')
 ```
 
+### 7.1 更漂亮的输出格式
 
+要使用 [格式化字符串字面值](https://docs.python.org/zh-cn/3/tutorial/inputoutput.html#tut-f-strings) ，请在字符串的开始引号或三引号之前加上一个 f 或 F 。在此字符串中，你可以在 { 和 } 字符之间写可以引用的变量或字面值的 Python 表达式。
 
+```python
+>>> year = 2016
+>>> event = 'Referendum'
+>>> f'Results of the {year} {event}'
+'Results of the 2016 Referendum'
+```
 
+字符串的 [str.format()](https://docs.python.org/zh-cn/3/library/stdtypes.html#str.format) 方法需要更多的手动操作。你仍将使用 { 和 } 来标记变量将被替换的位置，并且可以提供详细的格式化指令，但你还需要提供要格式化的信息。
 
-
-
-
-
-
+```python
+>>> yes_votes = 42_572_654
+>>> no_votes = 43_132_495
+>>> percentage = yes_votes / (yes_votes + no_votes)
+>>> '{:-9} YES votes  {:2.2%}'.format(yes_votes, percentage)
+' 42572654 YES votes  49.67%'
+```
 
 
 
