@@ -17,6 +17,11 @@ def fib2(n):  # return Fibonacci series up to n
     return result
 
 
+if __name__ == '__main__':
+    import sys
+
+    fib(int(sys.argv[1]))
+
 """
 >>> import doc_6 as fibo
 >>> fibo.fib(1000)

@@ -1007,13 +1007,40 @@ while 和 if 条件句中可以使用任意操作，而不仅仅是比较操作�
 
 注意对不同类型对象来说，只要待比较对象提供了合适的比较方法，就可以使用 < 和 > 来比较。例如，混合数值类型是通过他们的数值进行比较的，所以 0 等于 0.0，等等。否则，解释器将抛出一个 TypeError 异常，而不是随便给出一个结果。
 
+### 6.1 有关模块的更多信息
 
+注解 出于效率的考虑，每个模块在每个解释器会话中只被导入一次。因此，如果你更改了你的模块，则必须重新启动解释器， 或者，如果它只是一个要交互式地测试的模块，请使用 [importlib.reload()](https://docs.python.org/zh-cn/3/library/importlib.html#importlib.reload) ，例如 import importlib; importlib.reload(modulename)。
 
+### 6.1.1 以脚本的方式执行模块
 
+当你用下面方式运行一个Python模块:
 
+```shell script
+python fibo.py <arguments>
+```
 
+模块里的代码会被执行，就好像你导入了模块一样，但是 __name__ 被赋值为 "__main__"。 这意味着通过在你的模块末尾添加这些代码:
 
+```python
+if __name__ == "__main__":
+    import sys
+    fib(int(sys.argv[1]))
+```
 
+你既可以把这个文件当作脚本又可当作一个可调入的模块来使用， 因为那段解析命令行的代码只有在当模块是以“main”文件的方式执行的时候才会运行:
+
+```shell script
+$ python fibo.py 50
+0 1 1 2 3 5 8 13 21 34
+```
+
+如果模块是被导入的，那些代码是不运行的:
+
+```python
+>>> import fibo
+```
+
+这经常用于为模块提供一个方便的用户接口，或用于测试（以脚本的方式运行模块从而执行一些测试套件）。
 
 
 
