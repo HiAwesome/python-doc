@@ -1162,6 +1162,122 @@ My hovercraft is full of 'eels'.
 
 有关这些格式规范的参考，请参阅参考指南 [格式规格迷你语言](https://docs.python.org/zh-cn/3/library/string.html#formatspec) 。
 
+### 7.1.2 字符串的 format() 方法
+
+str.format() 方法的基本用法如下所示:
+
+```python
+>>> print('We are the {} who say "{}!"'.format('knights', 'Ni'))
+We are the knights who say "Ni!"
+```
+
+花括号和其中的字符（称为格式字段）将替换为传递给 str.format() 方法的对象。花括号中的数字可用来表示传递给 str.format() 方法的对象的位置。
+
+```python
+>>> print('{0} and {1}'.format('spam', 'eggs'))
+spam and eggs
+>>> print('{1} and {0}'.format('spam', 'eggs'))
+eggs and spam
+```
+
+如果在 str.format() 方法中使用关键字参数，则使用参数的名称引用它们的值。:
+
+```python
+print('This {food} is {adjective}.'.format(
+      food='spam', adjective='absolutely horrible'))
+This spam is absolutely horrible.
+```
+
+位置和关键字参数可以任意组合:
+
+```python
+>>> print('The story of {0}, {1}, and {other}.'.format('Bill', 'Manfred',
+                                                       other='Georg'))
+The story of Bill, Manfred, and Georg.
+```
+
+如果你有一个非常长的格式字符串，你不想把它拆开，那么你最好是按名称而不是按位置引用变量来进行格式化。 这可以通过简单地传递字典并使用方括号 '[]' 访问键来完成。
+
+```python
+>>> table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 8637678}
+>>> print('Jack: {0[Jack]:d}; Sjoerd: {0[Sjoerd]:d}; '
+...       'Dcab: {0[Dcab]:d}'.format(table))
+Jack: 4098; Sjoerd: 4127; Dcab: 8637678
+```
+
+这也可以通过使用 '**' 符号将 table 作为关键字参数传递。
+
+```python
+>>> table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 8637678}
+>>> print('Jack: {Jack:d}; Sjoerd: {Sjoerd:d}; Dcab: {Dcab:d}'.format(**table))
+Jack: 4098; Sjoerd: 4127; Dcab: 8637678
+```
+
+这在与内置函数 vars() 结合使用时非常有用，它会返回包含所有局部变量的字典。
+
+例如，下面几行代码生成一组整齐的列，其中包含给定的整数和它的平方以及立方:
+
+```python
+>>> for x in range(1, 11):
+...     print('{0:2d} {1:3d} {2:4d}'.format(x, x*x, x*x*x))
+...
+ 1   1    1
+ 2   4    8
+ 3   9   27
+ 4  16   64
+ 5  25  125
+ 6  36  216
+ 7  49  343
+ 8  64  512
+ 9  81  729
+10 100 1000
+```
+
+关于使用 str.format() 进行字符串格式化的完整概述，请参阅 [格式字符串语法](https://docs.python.org/zh-cn/3/library/string.html#formatstrings) 。
+
+### 7.1.4 旧的字符串格式化方法
+
+% 运算符（求余）也可用于字符串格式化。 给定 'string' % values，则 string 中的 % 实例会以零个或多个 values 元素替换。 此操作通常被称为字符串插值。 例如:
+
+```python
+>>> import math
+>>> print('The value of pi is approximately %5.3f.' % math.pi)
+The value of pi is approximately 3.142.
+```
+
+可在 [printf 风格的字符串格式化](https://docs.python.org/zh-cn/3/library/stdtypes.html#old-string-formatting) 部分找到更多信息。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
