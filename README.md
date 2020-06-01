@@ -1283,17 +1283,45 @@ Traceback (most recent call last):
 ValueError: I/O operation on closed file.
 ```
 
+### 8.3 处理异常
 
+try ... except 语句有一个可选的 else 子句，在使用时必须放在所有的 except 子句后面。对于在try 子句不引发异常时必须执行的代码来说很有用。例如:
 
+```python
+for arg in sys.argv[1:]:
+    try:
+        f = open(arg, 'r')
+    except OSError:
+        print('cannot open', arg)
+    else:
+        print(arg, 'has', len(f.readlines()), 'lines')
+        f.close()
+```
 
+使用 else 子句比向 try 子句添加额外的代码要好，因为它避免了意外捕获由 try ... except 语句保护的代码未引发的异常。
 
+发生异常时，它可能具有关联值，也称为异常 参数 。参数的存在和类型取决于异常类型。
 
+except 子句可以在异常名称后面指定一个变量。这个变量和一个异常实例绑定，它的参数存储在 instance.args 中。为了方便起见，异常实例定义了 __str__() ，因此可以直接打印参数而无需引用 .args 。也可以在抛出之前首先实例化异常，并根据需要向其添加任何属性。:
 
-
-
-
-
-
+```python
+>>> try:
+...     raise Exception('spam', 'eggs')
+... except Exception as inst:
+...     print(type(inst))    # the exception instance
+...     print(inst.args)     # arguments stored in .args
+...     print(inst)          # __str__ allows args to be printed directly,
+...                          # but may be overridden in exception subclasses
+...     x, y = inst.args     # unpack args
+...     print('x =', x)
+...     print('y =', y)
+...
+<class 'Exception'>
+('spam', 'eggs')
+('spam', 'eggs')
+x = spam
+y = eggs
+```
 
 
 
