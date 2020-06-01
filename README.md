@@ -1247,8 +1247,41 @@ The value of pi is approximately 3.142.
 
 可在 [printf 风格的字符串格式化](https://docs.python.org/zh-cn/3/library/stdtypes.html#old-string-formatting) 部分找到更多信息。
 
+7.2. 读写文件
+open() 返回一个 file object，最常用的有两个参数： open(filename, mode)。
 
+```python
+>>> f = open('workfile', 'w')
+```
 
+第一个参数是包含文件名的字符串。第二个参数是另一个字符串，其中包含一些描述文件使用方式的字符。mode 可以是 'r' ，表示文件只能读取，'w' 表示只能写入（已存在的同名文件会被删除），还有 'a' 表示打开文件以追加内容；任何写入的数据会自动添加到文件的末尾。'r+' 表示打开文件进行读写。mode 参数是可选的；省略时默认为 'r'。
+
+通常文件是以 text mode 打开的，这意味着从文件中读取或写入字符串时，都会以指定的编码方式进行编码。如果未指定编码格式，默认值与平台相关 (参见 open())。在mode 中追加的 'b' 则以 binary mode 打开文件：现在数据是以字节对象的形式进行读写的。这个模式应该用于所有不包含文本的文件。
+
+在文本模式下读取时，默认会把平台特定的行结束符 (Unix 上的 \n, Windows 上的 \r\n) 转换为 \n。在文本模式下写入时，默认会把出现的 \n 转换回平台特定的结束符。这样在幕后修改文件数据对文本文件来说没有问题，但是会破坏二进制数据例如 JPEG 或 EXE 文件中的数据。请一定要注意在读写此类文件时应使用二进制模式。
+
+在处理文件对象时，最好使用 with 关键字。 优点是当子句体结束后文件会正确关闭，即使在某个时刻引发了异常。 而且使用 with 相比等效的 try-finally 代码块要简短得多:
+
+```python
+>>> with open('workfile') as f:
+...     read_data = f.read()
+
+>>> # We can check that the file has been automatically closed.
+>>> f.closed
+True
+```
+
+如果你没有使用 with 关键字，那么你应该调用 f.close() 来关闭文件并立即释放它使用的所有系统资源。如果你没有显式地关闭文件，Python的垃圾回收器最终将销毁该对象并为你关闭打开的文件，但这个文件可能会保持打开状态一段时间。另外一个风险是不同的Python实现会在不同的时间进行清理。
+
+通过 with 语句或者调用 f.close() 关闭文件对象后，尝试使用该文件对象将自动失败。:
+
+```python
+>>> f.close()
+>>> f.read()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: I/O operation on closed file.
+```
 
 
 
