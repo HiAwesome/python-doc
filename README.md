@@ -871,6 +871,116 @@ dict() 构造函数可以直接从键值对序列里创建字典。
 {'sape': 4139, 'guido': 4127, 'jack': 4098}
 ```
 
+### 5.6 循环的技巧
+
+当在字典中循环时，用 items() 方法可将关键字和对应的值同时取出
+
+```python
+>>> knights = {'gallahad': 'the pure', 'robin': 'the brave'}
+>>> for k, v in knights.items():
+...     print(k, v)
+...
+gallahad the pure
+robin the brave
+```
+
+当在序列中循环时，用 [enumerate()](https://docs.python.org/zh-cn/3/library/functions.html#enumerate) 函数可以将索引位置和其对应的值同时取出
+
+```python
+>>> for i, v in enumerate(['tic', 'tac', 'toe']):
+...     print(i, v)
+...
+0 tic
+1 tac
+2 toe
+```
+
+当同时在两个或更多序列中循环时，可以用 zip() 函数将其内元素一一匹配。
+
+```python
+>>> questions = ['name', 'quest', 'favorite color']
+>>> answers = ['lancelot', 'the holy grail', 'blue']
+>>> for q, a in zip(questions, answers):
+...     print('What is your {0}?  It is {1}.'.format(q, a))
+...
+What is your name?  It is lancelot.
+What is your quest?  It is the holy grail.
+What is your favorite color?  It is blue.
+```
+
+当逆向循环一个序列时，先正向定位序列，然后调用 reversed() 函数
+
+```python
+>>> for i in reversed(range(1, 10, 2)):
+...     print(i)
+...
+9
+7
+5
+3
+1
+
+>>> for i in range(9, 0, -2):
+...     print(i)
+...
+9
+7
+5
+3
+1
+```
+
+如果要按某个指定顺序循环一个序列，可以用 sorted() 函数，它可以在不改动原序列的基础上返回一个新的排好序的序列
+
+```python
+>>> basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
+>>> for f in sorted(set(basket)):
+...     print(f)
+...
+apple
+banana
+orange
+pear
+```
+
+有时可能会想在循环时修改列表内容，一般来说改为创建一个新列表是比较简单且安全的，另外一种方法是遍历浅拷贝：
+
+```python
+>>> import math
+>>> raw_data = [56.2, float('NaN'), 51.7, 55.3, 52.5, float('NaN'), 47.8]
+>>> filtered_data = []
+>>> for value in raw_data:
+...     if not math.isnan(value):
+...         filtered_data.append(value)
+...
+>>> filtered_data
+[56.2, 51.7, 55.3, 52.5, 47.8]
+
+# 如果原列表不需要保留，则不需要声明新的列表名称 
+>>> import math
+>>> raw_data = [56.2, float('NaN'), 51.7, 55.3, 52.5, float('NaN'), 47.8]
+>>> for value in raw_data.copy():
+...     if math.isnan(value):
+...         raw_data.remove(value)
+...
+>>> raw_data
+[56.2, 51.7, 55.3, 52.5, 47.8]
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
