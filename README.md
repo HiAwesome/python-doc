@@ -1675,9 +1675,55 @@ unittest.main()  # Calling from the command line invokes all tests
 ```
 
 
+### 11.2 模板
 
+string 模块包含一个通用的 Template 类，具有适用于最终用户的简化语法。它允许用户在不更改应用逻辑的情况下定制自己的应用。
 
+上述格式化操作是通过占位符实现的，占位符由 $ 加上合法的 Python 标识符（只能包含字母、数字和下划线）构成。一旦使用花括号将占位符括起来，就可以在后面直接跟上更多的字母和数字而无需空格分割。$$ 将被转义成单个字符 $:
 
+```python
+>>> from string import Template
+>>> t = Template('${village}folk send $$10 to $cause.')
+>>> t.substitute(village='Nottingham', cause='the ditch fund')
+'Nottinghamfolk send $10 to the ditch fund.'
+```
+
+如果在字典或关键字参数中未提供某个占位符的值，那么 substitute() 方法将抛出 KeyError。对于邮件合并类型的应用，用户提供的数据有可能是不完整的，此时使用 safe_substitute() 方法更加合适 —— 如果数据缺失，它会直接将占位符原样保留。
+
+```python
+>>> t = Template('Return the $item to $owner.')
+>>> d = dict(item='unladen swallow')
+>>> t.substitute(d)
+Traceback (most recent call last):
+  ...
+KeyError: 'owner'
+>>> t.safe_substitute(d)
+'Return the unladen swallow to $owner.'
+```
+
+Template 的子类可以自定义定界符。例如，以下是某个照片浏览器的批量重命名功能，采用了百分号作为日期、照片序号和照片格式的占位符:
+
+```python
+>>> import time, os.path
+>>> photofiles = ['img_1074.jpg', 'img_1076.jpg', 'img_1077.jpg']
+>>> class BatchRename(Template):
+...     delimiter = '%'
+>>> fmt = input('Enter rename style (%d-date %n-seqnum %f-format):  ')
+Enter rename style (%d-date %n-seqnum %f-format):  Ashley_%n%f
+
+>>> t = BatchRename(fmt)
+>>> date = time.strftime('%d%b%y')
+>>> for i, filename in enumerate(photofiles):
+...     base, ext = os.path.splitext(filename)
+...     newname = t.substitute(d=date, n=i, f=ext)
+...     print('{0} --> {1}'.format(filename, newname))
+
+img_1074.jpg --> Ashley_0.jpg
+img_1076.jpg --> Ashley_1.jpg
+img_1077.jpg --> Ashley_2.jpg
+```
+
+模板的另一个应用是将程序逻辑与多样的格式化输出细节分离开来。这使得对 XML 文件、纯文本报表和 HTML 网络报表使用自定义模板成为可能。
 
 
 
