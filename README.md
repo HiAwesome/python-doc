@@ -1512,8 +1512,29 @@ class MappingSubclass(Mapping):
 请注意传递给 exec() 或 eval() 的代码不会将发起调用类的类名视作当前类；这类似于 global 语句的效果，因此这种效果仅限于同时经过字节码编译的代码。 同样的限制也适用于 getattr(), setattr() 和 delattr()，以及对于 __dict__ 的直接引用。
 
 
+### 9.10 生成器表达式
 
+某些简单的生成器可以写成简洁的表达式代码，所用语法类似列表推导式，将外层为圆括号而非方括号。 这种表达式被设计用于生成器将立即被外层函数所使用的情况。 生成器表达式相比完整的生成器更紧凑但较不灵活，相比等效的列表推导式则更为节省内存。
 
+示例:
+
+```python
+>>> sum(i*i for i in range(10))                 # sum of squares
+285
+
+>>> xvec = [10, 20, 30]
+>>> yvec = [7, 5, 3]
+>>> sum(x*y for x,y in zip(xvec, yvec))         # dot product
+260
+
+>>> unique_words = set(word for line in page  for word in line.split())
+
+>>> valedictorian = max((student.gpa, student.name) for student in graduates)
+
+>>> data = 'golf'
+>>> list(data[i] for i in range(len(data)-1, -1, -1))
+['f', 'l', 'o', 'g']
+```
 
 
 
