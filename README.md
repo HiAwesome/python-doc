@@ -1409,11 +1409,47 @@ with open("myfile.txt") as f:
 
 执行完语句后，即使在处理行时遇到问题，文件 f 也始终会被关闭。和文件一样，提供预定义清理操作的对象将在其文档中指出这一点。
 
+### 9.2.1 作用域和命名空间示例
 
+这个例子演示了如何引用不同作用域和名称空间，以及 global 和 nonlocal 会如何影响变量绑定:
 
+```python
+def scope_test():
+    def do_local():
+        spam = "local spam"
 
+    def do_nonlocal():
+        nonlocal spam
+        spam = "nonlocal spam"
 
+    def do_global():
+        global spam
+        spam = "global spam"
 
+    spam = "test spam"
+    do_local()
+    print("After local assignment:", spam)
+    do_nonlocal()
+    print("After nonlocal assignment:", spam)
+    do_global()
+    print("After global assignment:", spam)
+
+scope_test()
+print("In global scope:", spam)
+```
+
+示例代码的输出是：
+
+```python
+After local assignment: test spam
+After nonlocal assignment: nonlocal spam
+After global assignment: nonlocal spam
+In global scope: global spam
+```
+
+请注意 局部 赋值（这是默认状态）不会改变 scope_test 对 spam 的绑定。 nonlocal 赋值会改变 scope_test 对 spam 的绑定，而 global 赋值会改变模块层级的绑定。
+
+您还可以在 global 赋值之前看到之前没有 spam 的绑定。
 
 
 
