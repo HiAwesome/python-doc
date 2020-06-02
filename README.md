@@ -1726,8 +1726,36 @@ img_1077.jpg --> Ashley_2.jpg
 模板的另一个应用是将程序逻辑与多样的格式化输出细节分离开来。这使得对 XML 文件、纯文本报表和 HTML 网络报表使用自定义模板成为可能。
 
 
+### 11.6 弱引用
 
+Python 会自动进行内存管理（对大多数对象进行引用计数并使用 garbage collection 来清除循环引用）。 当某个对象的最后一个引用被移除后不久就会释放其所占用的内存。
 
+此方式对大多数应用来说都适用，但偶尔也必须在对象持续被其他对象所使用时跟踪它们。 不幸的是，跟踪它们将创建一个会令其永久化的引用。 weakref 模块提供的工具可以不必创建引用就能跟踪对象。 当对象不再需要时，它将自动从一个弱引用表中被移除，并为弱引用对象触发一个回调。 典型应用包括对创建开销较大的对象进行缓存:
+
+```python
+import weakref, gc
+class A:
+    def __init__(self, value):
+        self.value = value
+    def __repr__(self):
+        return str(self.value)
+
+>>> a = A(10)                   # create a reference
+>>> d = weakref.WeakValueDictionary()
+>>> d['primary'] = a            # does not create a reference
+>>> d['primary']                # fetch the object if it is still alive
+10
+>>> del a                       # remove the one reference
+>>> gc.collect()                # run garbage collection right away
+0
+>>> d['primary']                # entry was automatically removed
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+    d['primary']                # entry was automatically removed
+  File "C:/python38/lib/weakref.py", line 46, in __getitem__
+    o = self.data[key]()
+KeyError: 'primary'
+```
 
 
 
