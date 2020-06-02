@@ -1551,10 +1551,36 @@ re 模块为高级字符串处理提供正则表达式工具。对于复杂的�
 'cat in the hat'
 ```
 
+### 10.6 数学
 
+random 模块提供了进行随机选择的工具:
 
+```python
+>>> import random
+>>> random.choice(['apple', 'pear', 'banana'])
+'apple'
+>>> random.sample(range(100), 10)   # sampling without replacement
+[30, 83, 16, 4, 8, 81, 41, 50, 18, 33]
+>>> random.random()    # random float
+0.17970987693706186
+>>> random.randrange(6)    # random integer chosen from range(6)
+4
+```
 
+statistics 模块计算数值数据的基本统计属性（均值，中位数，方差等）:
 
+```python
+>>> import statistics
+>>> data = [2.75, 1.75, 1.25, 0.25, 0.5, 1.25, 3.5]
+>>> statistics.mean(data)
+1.6071428571428572
+>>> statistics.median(data)
+1.25
+>>> statistics.variance(data)
+1.3720238095238095
+```
+
+[SciPy项目](https://scipy.org) 有许多其他模块用于数值计算。
 
 
 
