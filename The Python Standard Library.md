@@ -33,3 +33,21 @@ a == b == c == d == e
 
 不论在哪种情况下，异常本身总会在任何串连异常之后显示，以便回溯的最后一行总是显示所引发的最后一个异常。
 
+## [文本处理服务](https://docs.python.org/zh-cn/3/library/text.html)
+
+本章介绍的模块提供了广泛的字符串操作和其他文本处理服务。
+
+### [string 常见的字符串操作](https://docs.python.org/zh-cn/3/library/string.html)
+### [re 正则表达式操作](https://docs.python.org/zh-cn/3/library/re.html)
+
+
+
+
+
+
+
+
+
+
+
+
