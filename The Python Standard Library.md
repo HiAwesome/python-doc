@@ -231,5 +231,21 @@ random 模块还提供 SystemRandom 类，它使用系统函数 os.urandom() 从
 
 为什么不可能产生真正的随机数？参考: [Why Random Numbers are Impossible in Software](https://thecodeboss.dev/2017/05/why-random-numbers-are-impossible-in-software/), [Why is it impossible to produce truly random numbers?](https://softwareengineering.stackexchange.com/questions/124233/why-is-it-impossible-to-produce-truly-random-numbers).
 
+### [statistics 数学统计函数](https://docs.python.org/zh-cn/3/library/statistics.html)
+
+该模块提供了用于计算数字 (Real-valued) 数据的数理统计量的函数。
+
+此模块并不是诸如 NumPy ， SciPy 等第三方库或者诸如 Minitab ， SAS ， Matlab 等针对专业统计学家的专有全功能统计软件包的竟品。此模块针对图形和科学计算器的水平。
+
+除非明确注释，这些函数支持 int ， float ， Decimal 和 Fraction 。当前不支持同其他类型（是否在数字塔中）的行为。混合类型的集合也是未定义的，并且依赖于实现。如果你输入的数据由混合类型组成，你应该能够使用 map() 来确保一个一致的结果，比如： map(float, input_data) 。
+
+## [函数式编程](https://docs.python.org/zh-cn/3/library/functional.html)
+
+本章里描述的模块提供了函数和类，以支持函数式编程风格和在可调用对象上的通用操作。
+
+
+
+
+
 
 
