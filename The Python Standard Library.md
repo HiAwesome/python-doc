@@ -216,7 +216,7 @@ random 模块还提供 SystemRandom 类，它使用系统函数 os.urandom() 从
 
 警告: 不应将此模块的伪随机生成器用于安全目的。 有关安全性或加密用途，请参阅 [secrets](https://docs.python.org/zh-cn/3/library/secrets.html#module-secrets) 模块。
 
-
+为什么不可能产生真正的随机数？参考: [Why Random Numbers are Impossible in Software](https://thecodeboss.dev/2017/05/why-random-numbers-are-impossible-in-software/), [Why is it impossible to produce truly random numbers?](https://softwareengineering.stackexchange.com/questions/124233/why-is-it-impossible-to-produce-truly-random-numbers).
 
 
 
