@@ -49,3 +49,41 @@ parent/
 
 导入 parent.one 将隐式地执行 parent/__init__.py 和 parent/one/__init__.py。 后续导入 parent.two 或 parent.three 则将分别执行 parent/two/__init__.py 和 parent/three/__init__.py。
 
+## 5.7. 包相对导入
+
+相对导入使用前缀点号。 一个前缀点号表示相对导入从当前包开始。 两个或更多前缀点号表示对当前包的上级包的相对导入，第一个点号之后的每个点号代表一级。 例如，给定以下的包布局结构:
+
+```text
+package/
+    __init__.py
+    subpackage1/
+        __init__.py
+        moduleX.py
+        moduleY.py
+    subpackage2/
+        __init__.py
+        moduleZ.py
+    moduleA.py
+```
+
+不论是在 subpackage1/moduleX.py 还是 subpackage1/__init__.py 中，以下导入都是有效的:
+
+```python
+from .moduleY import spam
+from .moduleY import spam as ham
+from . import moduleY
+from ..subpackage1 import moduleY
+from ..subpackage2.moduleZ import eggs
+from ..moduleA import foo
+```
+
+绝对导入可以使用 import <> 或 from <> import <> 语法，但相对导入只能使用第二种形式；其中的原因在于:
+
+```python
+import XXX.YYY.ZZZ
+```
+
+应当提供 XXX.YYY.ZZZ 作为可用表达式，但 .moduleY 不是一个有效的表达式。
+
+
+
