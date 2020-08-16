@@ -38,7 +38,12 @@ a == b == c == d == e
 本章介绍的模块提供了广泛的字符串操作和其他文本处理服务。
 
 ### [string 常见的字符串操作](https://docs.python.org/zh-cn/3/library/string.html)
+
+本章主要介绍了字符串常量、自定义字符串格式化、格式字符串语法、模板字符串、辅助函数。
+
 ### [re 正则表达式操作](https://docs.python.org/zh-cn/3/library/re.html)
+
+这个模块提供了与 Perl 语言类似的正则表达式匹配操作。
 
 
 
