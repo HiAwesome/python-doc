@@ -6,7 +6,7 @@ def heapsort(iterable):
     h = []
     for value in iterable:
         heappush(h, value)
-    return [heappop(h) for i in range(len(h))]
+    return [heappop(h) for _ in range(len(h))]
 
 
 print(heapsort([1, 3, 5, 7, 9, 2, 4, 6, 8, 0]))  # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -19,5 +19,3 @@ heappush(h, (7, 'release product'))
 heappush(h, (1, 'write spec'))
 heappush(h, (3, 'create tests'))
 print(heappop(h))  # (1, 'write spec')
-
-
