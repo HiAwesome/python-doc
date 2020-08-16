@@ -108,7 +108,7 @@ defaultdict 是内置 dict 类的子类。它重载了一个方法并添加了�
 * OrderedDict 类有一个 move_to_end() 方法，可以有效地将元素移动到任一端。
 * Python 3.8之前， dict 缺少 __reversed__() 方法。
 
-#### heapq --- 堆队列算法
+#### heapq 堆队列算法
 
 这个模块提供了堆队列算法的实现，也称为优先队列算法。
 
