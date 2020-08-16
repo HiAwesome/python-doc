@@ -154,9 +154,13 @@ pprint 模块提供了“美化打印”任意 Python 数据结构的功能，�
 
 字典在计算其显示形式前会先根据键来排序。
 
+### [enum 对枚举的支持](https://docs.python.org/zh-cn/3/library/enum.html)
 
+枚举是一组符号名称（枚举成员）的集合，枚举成员应该是唯一的、不可变的。在枚举中，可以对成员进行恒等比较，并且枚举本身是可迭代的。
 
+## [数字和数学模块](https://docs.python.org/zh-cn/3/library/numeric.html)
 
+本章介绍的模块提供与数字和数学相关的函数和数据类型。 numbers 模块定义了数字类型的抽象层次结构。 math 和 cmath 模块包含浮点数和复数的各种数学函数。 decimal 模块支持使用任意精度算术的十进制数的精确表示。
 
 
 
