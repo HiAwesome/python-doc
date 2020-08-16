@@ -1,6 +1,6 @@
 # The Python Language Reference
 
-根据 [官网教程](https://docs.python.org/3/reference/index.html) 练习 Python3。
+根据 [Python 语言参考](https://docs.python.org/3/reference/index.html) 练习 Python3。
 
 ## Tips
 
