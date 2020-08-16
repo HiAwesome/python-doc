@@ -51,7 +51,11 @@ a == b == c == d == e
 
 Python也提供一些内置数据类型，特别是，dict、 list、set、frozenset、以及 tuple。str 这个类是用来存储Unicode字符串的，而 bytes 和 bytearray 这两个类是用来存储二进制数据的。
 
+### [datetime 基本的日期和时间类型](https://docs.python.org/zh-cn/3/library/datetime.html)
 
+datetime 模块提供用于处理日期和时间的类。
+
+在支持日期时间数学运算的同时，实现的关注点更着重于如何能够更有效地解析其属性用于格式化输出和数据操作。
 
 
 
