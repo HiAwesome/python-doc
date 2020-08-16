@@ -108,7 +108,7 @@ defaultdict 是内置 dict 类的子类。它重载了一个方法并添加了�
 * OrderedDict 类有一个 move_to_end() 方法，可以有效地将元素移动到任一端。
 * Python 3.8之前， dict 缺少 __reversed__() 方法。
 
-#### heapq 堆队列算法
+### [heapq 堆队列算法](https://docs.python.org/zh-cn/3/library/heapq.html)
 
 这个模块提供了堆队列算法的实现，也称为优先队列算法。
 
@@ -122,7 +122,7 @@ defaultdict 是内置 dict 类的子类。它重载了一个方法并添加了�
 
 Python 提供的是最小堆，如果需要最大堆目前的主流方案是给每个元素乘负一，取值的时候再乘负一，参考 [What do I use for a max-heap implementation in Python?](https://stackoverflow.com/questions/2501457/what-do-i-use-for-a-max-heap-implementation-in-python) 和 [Max Heap in Python](https://www.geeksforgeeks.org/max-heap-in-python/).
 
-#### bisect 数组二分查找算法
+### [bisect 数组二分查找算法](https://docs.python.org/zh-cn/3/library/bisect.html)
 
 这个模块对有序列表提供了支持，使得他们可以在插入新数据仍然保持有序。对于长列表，如果其包含元素的比较操作十分昂贵的话，这可以是对更常见方法的改进。这个模块叫做 bisect 因为其使用了基本的二分（bisection）算法。源代码也可以作为很棒的算法示例（边界判断也做好啦！）
 
