@@ -63,9 +63,15 @@ datetime 模块提供用于处理日期和时间的类。
 
 在这个模块中定义的函数和类都基于一个理想化的日历，现行公历向过去和未来两个方向无限扩展。这与 Dershowitz 和 Reingold 的书 "历法计算" 中所有计算的基本日历 -- "proleptic Gregorian" 日历的定义相符合。 ISO 8601标准还规定了 0 和 负数年份。0年指公元前1年， -1年指公元前2年，依此类推。
 
+### [collections 容器数据类型](https://docs.python.org/zh-cn/3/library/collections.html)
 
+这个模块实现了特定目标的容器，以提供Python标准内建容器 dict , list , set , 和 tuple 的替代选择。
 
+#### ChainMap 对象
 
+一个 ChainMap 类是为了将多个映射快速的链接到一起，这样它们就可以作为一个单元处理。它通常比创建一个新字典和多次调用 update() 要快很多。
+
+这个类可以用于模拟嵌套作用域，并且在模版化的时候比较有用。
 
 
 
