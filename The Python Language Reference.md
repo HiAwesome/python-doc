@@ -17,6 +17,17 @@ if 1900 < year < 2100 and 1 <= month <= 12 \
 
 以反斜杠结束的行不能带有注释。反斜杠不能用来拼接注释。反斜杠不能用来拼接形符，字符串除外 (即原文字符串以外的形符不能用反斜杠分隔到两个物理行)。不允许有原文字符串以外的反斜杠存在于物理行的其他位置。
 
+### 2.1.6. 隐式的行拼接
 
+圆括号、方括号或花括号以内的表达式允许分成多个物理行，无需使用反斜杠。例如:
+
+```python
+month_names = ['Januari', 'Februari', 'Maart',      # These are the
+               'April',   'Mei',      'Juni',       # Dutch names
+               'Juli',    'Augustus', 'September',  # for the months
+               'Oktober', 'November', 'December']   # of the year
+```
+
+隐式的行拼接可以带有注释。后续行的缩进不影响程序结构。后续行也允许为空白行。隐式拼接的行之间不会有 NEWLINE 形符。隐式拼接的行也可以出现于三引号字符串中 (见下)；此情况下这些行不允许带有注释。
 
 
