@@ -45,6 +45,12 @@ a == b == c == d == e
 
 这个模块提供了与 Perl 语言类似的正则表达式匹配操作。
 
+## [数据类型](https://docs.python.org/zh-cn/3/library/datatypes.html)
+
+本章所描述的模块提供了许多专门的数据类型，如日期和时间、固定类型的数组、堆队列、双端队列、以及枚举。
+
+Python也提供一些内置数据类型，特别是，dict、 list、set、frozenset、以及 tuple。str 这个类是用来存储Unicode字符串的，而 bytes 和 bytearray 这两个类是用来存储二进制数据的。
+
 
 
 
