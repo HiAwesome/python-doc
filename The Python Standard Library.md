@@ -119,3 +119,6 @@ defaultdict 是内置 dict 类的子类。它重载了一个方法并添加了�
 基于这两方面，把堆看作原生的Python list也没什么奇怪的： heap[0] 表示最小的元素，同时 heap.sort() 维护了堆的不变性！
 
 要创建一个堆，可以使用list来初始化为 [] ，或者你可以通过一个函数 heapify() ，来把一个list转换成堆。
+
+Python 提供的是最小堆，如果需要最大堆目前的主流方案是给每个元素乘负一，取值的时候再乘负一，参考 [What do I use for a max-heap implementation in Python?](https://stackoverflow.com/questions/2501457/what-do-i-use-for-a-max-heap-implementation-in-python) 和 [Max Heap in Python](https://www.geeksforgeeks.org/max-heap-in-python/).
+
