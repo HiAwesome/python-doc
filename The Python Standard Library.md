@@ -243,6 +243,16 @@ random 模块还提供 SystemRandom 类，它使用系统函数 os.urandom() 从
 
 本章里描述的模块提供了函数和类，以支持函数式编程风格和在可调用对象上的通用操作。
 
+### [itertools 为高效循环而创建迭代器的函数](https://docs.python.org/zh-cn/3/library/itertools.html)
+
+本模块实现一系列 iterator ，这些迭代器受到APL，Haskell和SML的启发。为了适用于Python，它们都被重新写过。
+
+本模块标准化了一个快速、高效利用内存的核心工具集，这些工具本身或组合都很有用。它们一起形成了“迭代器代数”，这使得在纯Python中有可能创建简洁又高效的专用工具。
+
+例如，SML有一个制表工具： tabulate(f)，它可产生一个序列 f(0), f(1), ...。在Python中可以组合 map() 和 count() 实现： map(f, count())。
+
+这些内置工具同时也能很好地与 operator 模块中的高效函数配合使用。例如，我们可以将两个向量的点积映射到乘法运算符： sum(map(operator.mul, vector1, vector2)) 。
+
 
 
 
