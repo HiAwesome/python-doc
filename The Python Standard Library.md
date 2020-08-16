@@ -253,6 +253,10 @@ random 模块还提供 SystemRandom 类，它使用系统函数 os.urandom() 从
 
 这些内置工具同时也能很好地与 operator 模块中的高效函数配合使用。例如，我们可以将两个向量的点积映射到乘法运算符： sum(map(operator.mul, vector1, vector2)) 。
 
+### [functools 高阶函数和可调用对象上的操作](https://docs.python.org/zh-cn/3/library/functools.html)
+
+functools 模块应用于高阶函数，即参数或（和）返回值为其他函数的函数。 通常来说，此模块的功能适用于所有可调用对象。
+
 
 
 
