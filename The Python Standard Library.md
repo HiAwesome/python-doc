@@ -323,6 +323,20 @@ glob 模块可根据 Unix 终端所用规则找出所有匹配特定模式的路
 
 property list (.plist) 文件格式是一种简单的序列化格式，它支持一些基本对象类型，例如字典、列表、数字和字符串等。 通常使用一个字典作为最高层级对象。
 
+## [加密服务](https://docs.python.org/zh-cn/3/library/crypto.html)
+
+本章中描述的模块实现了加密性质的各种算法。 它们可以在安装时自行选择。 在 Unix 系统上，crypt 模块也可以使用。
+
+### [secrets 生成安全随机数字用于管理密码](https://docs.python.org/zh-cn/3/library/secrets.html)
+
+secrets 模块可用于生成高加密强度的随机数，适应管理密码、账户验证、安全凭据和相关机密数据管理的需要。
+
+特别地，应当优先使用 secrets 来替代 random 模块中默认的伪随机数生成器，后者被设计用于建模和仿真，而不适用于安全和加密。
+
+## [通用操作系统服务](https://docs.python.org/zh-cn/3/library/allos.html)
+
+本章中描述的各模块提供了在（几乎）所有的操作系统上可用的操作系统特性的接口，例如文件和时钟。这些接口通常以 Unix 或 C 接口为参考对象，不过在大多数其他系统上也可用。
+
 
 
 
