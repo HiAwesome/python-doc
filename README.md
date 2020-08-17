@@ -1,6 +1,6 @@
 # Python documentation
 
-# [Python 文档](https://docs.python.org/zh-cn/3/contents.html) ，目前包含以下几块内容：
+# [Python 文档](https://docs.python.org/zh-cn/3/contents.html)
 
 * [Python 教程](/The%20Python%20Tutorial.md)
 * [Python 语言参考](/The%20Python%20Language%20Reference.md)
