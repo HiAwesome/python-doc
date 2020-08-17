@@ -471,6 +471,165 @@ RFC 3548 编码的目的是使得二进制数据可以作为电子邮件的内�
 
 Python 支持各种模块，以处理各种形式的结构化数据标记。 这包括使用标准通用标记语言（SGML）和超文本标记语言（HTML）的模块，以及使用可扩展标记语言（XML）的几个接口。
 
+## [互联网协议和支持](https://docs.python.org/zh-cn/3/library/internet.html)
+
+本章介绍的模块实现了互联网协议并支持相关技术。 它们都是用 Python 实现的。 这些模块中的大多数都需要存在依赖于系统的模块 socket ，目前大多数流行平台都支持它。 
+
+## [多媒体服务](https://docs.python.org/zh-cn/3/library/mm.html)
+
+本章描述的模块实现了主要用于多媒体应用的各种算法或接口。 它们可在安装时自行决定。
+
+## [国际化](https://docs.python.org/zh-cn/3/library/i18n.html)
+
+本章中介绍的模块通过提供选择要在程序信息中使用的语言的机制或通过定制输出以匹配本地约定来帮助你编写不依赖于语言和区域设置的软件。
+
+## [程序框架](https://docs.python.org/zh-cn/3/library/frameworks.html)
+
+本章中描述的模块是很大程度上决定程序结构的框架。 目前，这里描述的模块都面向编写命令行接口。
+
+### [turtle 海龟绘图](https://docs.python.org/zh-cn/3/library/turtle.html)
+
+海龟绘图很适合用来引导孩子学习编程。 最初来自于 Wally Feurzeig, Seymour Papert 和 Cynthia Solomon 于 1967 年所创造的 Logo 编程语言。
+
+### [cmd 支持面向行的命令解释器](https://docs.python.org/zh-cn/3/library/cmd.html)
+
+Cmd 类提供简单框架用于编写面向行的命令解释器。 这些通常对测试工具，管理工具和原型有用，这些工具随后将被包含在更复杂的接口中。
+
+## [Tk图形用户界面(GUI)](https://docs.python.org/zh-cn/3/library/tk.html)
+
+Tcl/Tk集成到Python中已经有一些年头了。Python程序员可以通过 tkinter 包和它的扩展， tkinter.tix 模块和 tkinter.ttk 模块，来使用这套鲁棒的、平台无关的窗口工具集。
+
+tkinter 包使用面向对象的方式对Tcl/Tk进行了一层薄包装。使用 tkinter ，你不需要写Tcl代码，但可能需要参考Tk文档，甚至Tcl文档。 tkinter 使用Python类，对Tk的窗体小部件（Widgets）进行了一系列的封装。除此之外，内部模块 _tkinter 针对Python和Tcl之间的交互，提供了一套线程安全的机制。
+
+tkinter 最大的优点就一个字：快，再一个，是Python自带的。尽管官方文档不太完整，但有其他资源可以参考，比如Tk手册，教程等。 tkinter 也以比较过时的外观为人所知，但在Tk 8.5中，这一点得到了极大的改观。除此之外，如果有兴趣，还有其他的一些GUI库可供使用。更多信息，请参考 其他图形用户界面（GUI）包 小节。
+
+### [IDLE](https://docs.python.org/zh-cn/3/library/idle.html)
+
+IDLE 是 Python 所内置的开发与学习环境。
+
+IDLE 具有以下特性：
+* 编码于 100% 纯正的 Python，使用名为 tkinter 的图形用户界面工具
+* 跨平台：在 Windows、Unix 和 macOS 上工作近似。
+* 提供输入输出高亮和错误信息的 Python 命令行窗口 （交互解释器）
+* 提供多次撤销操作、Python 语法高亮、智能缩进、函数调用提示、自动补全等功能的多窗口文本编辑器
+* 在多个窗口中检索，在编辑器中替换文本，以及在多个文件中检索（通过 grep）
+* 提供持久保存的断点调试、单步调试、查看本地和全局命名空间功能的调试器
+* 配置、浏览以及其它对话框
+
+## [开发工具](https://docs.python.org/zh-cn/3/library/development.html)
+
+本章中描述的各模块可帮你编写 Python 程序。例如，pydoc 模块接受一个模块并根据该模块的内容来生成文档。doctest 和 unittest 这两个模块包含了用于编写单元测试的框架，并可用于自动测试所编写的代码，验证预期的输出是否产生。2to3 程序能够将 Python 2.x 源代码翻译成有效的 Python 3.x 源代码。
+
+### [pydoc 文档生成器和在线帮助系统](https://docs.python.org/zh-cn/3/library/pydoc.html)
+
+该pydoc模块会自动从Python模块生成文档。该文档可以在控制台上以文本页面的形式呈现，提供给Web浏览器或保存为HTML文件。
+
+对于模块、类、函数和方法，显示的文档内容取自文档字符串（即 __doc__ 属性），并会递归地从其带文档的成员中获取。 如果没有文档字符串，pydoc 会尝试从类、函数或方法定义上方，或是模块顶部的注释行段落获取 (参见 inspect.getcomments()).
+
+内置函数 help() 会发起调用交互式解释器的在线帮助系统，该系统使用 pydoc 在终端上生成文本形式的文档内容。 同样的文本文档也可以在 Python 解释器以外通过在操作系统的命令提示符下以脚本方式运行 pydoc 来查看。 
+
+### [doctest 测试交互性的Python示例](https://docs.python.org/zh-cn/3/library/doctest.html)
+
+doctest 模块寻找像Python交互式代码的文本，然后执行这些代码来确保它们的确就像展示的那样正确运行，有许多方法来使用doctest：
+* 通过验证所有交互式示例仍然按照记录的方式工作，以此来检查模块的文档字符串是否是最新的。
+* 通过验证来自测试文件或测试对象的交互式示例是否按预期工作来执行回归测试。
+* 编写软件包的教程文档，并通过输入输出示例进行详细说明。根据是否强调示例或说明文字，这具有“识字测试”或“可执行文档”的风格。
+
+### [unittest 单元测试框架](https://docs.python.org/zh-cn/3/library/unittest.html)
+
+unittest 单元测试框架是受到 JUnit 的启发，与其他语言中的主流单元测试框架有着相似的风格。其支持测试自动化，配置共享和关机代码测试。支持将测试样例聚合到测试集中，并将测试与报告框架独立。
+
+为了实现这些，unittest 通过面向对象的方式支持了一些重要的概念。
+
+### [unittest.mock 模拟对象库](https://docs.python.org/zh-cn/3/library/unittest.mock.html)
+
+unittest.mock 是一个用于测试的Python库。它允许使用模拟对象来替换受测系统的部分，并对它们如何已经被使用进行断言。
+
+unittest.mock 提供了一个核心类 Mock 用于消除了在整个测试套件中创建大量存根(stub)的需求。创建后，就可以断言调用了哪些方法/属性及其参数。还可以以常规方式指定返回值并设置所需的属性。
+
+此外，mock 提供了用于修补测试范围内模块和类级别属性的 patch() 装饰器，和用于创建独特对象的 sentinel 。 阅读 quick guide 中的案例了解如何使用 Mock ，MagicMock 和 patch() 。
+
+Mock 是为 unittest 而设计，且简单易用。模拟基于 'action -> assertion' 模式，而不是许多模拟框架所使用的 'record -> replay'模式。
+
+### [unittest.mock 上手指南](https://docs.python.org/zh-cn/3/library/unittest.mock-examples.html)
+
+使用 Mock 的常见场景：
+* 模拟函数调用
+* 记录“对象上的方法调用”
+
+### [2to3 自动将 Python 2 代码转为 Python 3 代码](https://docs.python.org/zh-cn/3/library/2to3.html)
+
+2to3 是一个 Python 程序，它可以用来读取 Python 2.x 版本的代码，并使用一系列的 修复器 来将其转换为合法的 Python 3.x 代码。标准库中已经包含了丰富的修复器，这足以处理绝大多数代码。不过 2to3 的支持库 lib2to3 是一个很灵活通用的库，所以你也可以为 2to3 编写你自己的修复器。lib2to3 也可以用在那些需要自动处理 Python 代码的应用中。
+
+### [test Python回归测试包](https://docs.python.org/zh-cn/3/library/test.html)
+
+注解: 该test软件包仅供Python内部使用。它被记录为Python核心开发人员的利益。不建议在Python标准库之外使用此软件包，因为此处提到的代码可以更改，也可以在不考虑Python版本之间删除的情况下删除。
+
+该test软件包包含针对Python的所有回归测试以及模块test.support和test.regrtest。 test.support用于test.regrtest驱动测试套件时增强您 的测试。
+
+test包中每个以其名称开头的模块test_都是针对特定模块或功能的测试套件。所有新测试都应使用unittest或doctest模块编写。一些较早的测试是使用“传统”测试样式编写的，该样式将打印输出与进行比较 sys.stdout。这种测试风格被认为已弃用。
+
+## [调试和分析](https://docs.python.org/zh-cn/3/library/debug.html)
+
+这些库可以帮助你进行 Python 开发：调试器使你能够逐步执行代码，分析堆栈帧并设置中断点等等，性能分析器可以运行代码并为你提供执行时间的详细数据，使你能够找出你的程序中的瓶颈。 审计事件提供运行时行为的可见性，如果没有此工具则需要进行侵入式调试或修补。
+
+### [Python Profilers 分析器](https://docs.python.org/zh-cn/3/library/profile.html)
+
+cProfile 和 profile 提供了 Python 程序的 确定性性能分析 。 profile 是一组统计数据，描述程序的各个部分执行的频率和时间。这些统计数据可以通过 pstats 模块格式化为报表。
+
+Python 标准库提供了同一分析接口的两种不同实现：
+1. 对于大多数用户，建议使用 cProfile ；这是一个 C 扩展插件，因为其合理的运行开销，所以适合于分析长时间运行的程序。该插件基于 lsprof ，由 Brett Rosen 和 Ted Chaotter 贡献。
+2. profile 是一个纯 Python 模块（cProfile 就是模拟其接口的 C 语言实现），但它会显著增加配置程序的开销。如果你正在尝试以某种方式扩展分析器，则使用此模块可能会更容易完成任务。该模块最初由 Jim Roskind 设计和编写。
+
+注解: profiler 分析器模块被设计为给指定的程序提供执行概要文件，而不是用于基准测试目的（ timeit 才是用于此目标的，它能获得合理准确的结果）。这特别适用于将 Python 代码与 C 代码进行基准测试：分析器为Python 代码引入开销，但不会为 C级别的函数引入开销，因此 C 代码似乎比任何Python 代码都更快。
+
+### [timeit 测量小代码片段的执行时间](https://docs.python.org/zh-cn/3/library/timeit.html)
+
+该模块提供了一种简单的方法来计算一小段 Python 代码的耗时。它有 命令行界面 以及一个 可调用 方法。它避免了许多用于测量执行时间的常见陷阱。另见 Tim Peters 对 O'Reilly 出版的 Python Cookbook 中“算法”章节的介绍。
+
+## [软件打包和分发](https://docs.python.org/zh-cn/3/library/distribution.html)
+
+这些库可帮助你发布和安装 Python 软件。 虽然这些模块设计为与 [Python 包索引](https://pypi.org) 结合使用，但它们也可以与本地索引服务器一起使用，或者根本不使用任何索引服务器。
+
+### [distutils 构建和安装 Python 模块](https://docs.python.org/zh-cn/3/library/distutils.html)
+
+distutils 包为将待构建和安装的额外的模块，打包成 Python 安装包提供支持。新模块既可以是百分百的纯 Python，也可以是用 C 写的扩展模块，或者可以是一组包含了同时用 Python 和 C 编码的 Python 包。
+
+大多数 Python 用户 不会 想要直接使用这个包，而是使用 Python 包官方维护的跨版本工具。特别地， setuptools 是一个对于 distutils 的增强选项，它能提供：
+* 对声明项目依赖的支持
+* 额外的用于配置哪些文件包含在源代码发布中的机制（包括与版本控制系统集成需要的插件）
+* 生成项目“进入点”的能力，进入点可用作应用插件系统的基础
+* 自动在安装时间生成 Windows 命令行可执行文件的能力，而不是需要预编译它们
+* 跨所有受支持的 Python 版本上的一致的表现
+
+## [Python 运行时服务](https://docs.python.org/zh-cn/3/library/python.html)
+
+本章里描述的模块提供了和Python解释器及其环境交互相关的广泛服务。
+
+### [sys 系统相关的参数和函数](https://docs.python.org/zh-cn/3/library/sys.html)
+
+该模块提供了一些变量和函数。这些变量可能被解释器使用，也可能由解释器提供。这些函数会影响解释器。本模块总是可用的。
+
+### [builtins 内建对象](https://docs.python.org/zh-cn/3/library/builtins.html)
+
+该模块提供对Python的所有“内置”标识符的直接访问；例如，builtins.open 是内置函数的全名 open() 。请参阅 内置函数 和 内置常量 的文档。
+
+大多数应用程序通常不会显式访问此模块，但在提供与内置值同名的对象的模块中可能很有用，但其中还需要内置该名称。例如，在一个想要实现 open() 函数的模块中，它包装了内置的 open() ，这个模块可以直接使用。
+
+### [contextlib 为 with语句上下文提供的工具](https://docs.python.org/zh-cn/3/library/contextlib.html)
+
+此模块为涉及 with 语句的常见任务提供了实用的程序。更多信息请参见 上下文管理器类型 和 with 语句上下文管理器。
+
+### [\__future\__ Future 语句定义](https://docs.python.org/zh-cn/3/library/__future__.html)
+
+\__future\__ 是一个真正的模块，这主要有 3 个原因：
+* 避免混淆已有的分析 import 语句并查找 import 的模块的工具。
+* 确保 future 语句 在 2.1 之前的版本运行时至少能抛出 runtime 异常（import __future__ 会失败，因为 2.1 版本之前没有这个模块）。
+* 当引入不兼容的修改时，可以记录其引入的时间以及强制使用的时间。这是一种可执行的文档，并且可以通过 import __future__ 来做程序性的检查。
+
+
+
+
 
 
 
