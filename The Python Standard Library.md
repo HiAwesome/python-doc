@@ -373,11 +373,103 @@ argparse 模块可以让人轻松编写用户友好的命令行接口。程序�
 
 ctypes 是 Python 的外部函数库。它提供了与 C 兼容的数据类型，并允许调用 DLL 或共享库中的函数。可使用该模块以纯 Python 形式对这些库进行封装。
 
+## [并发执行](https://docs.python.org/zh-cn/3/library/concurrency.html)
 
+本章中描述的模块支持并发执行代码。 适当的工具选择取决于要执行的任务（CPU密集型或IO密集型）和偏好的开发风格（事件驱动的协作式多任务或抢占式多任务处理）。 
 
+### [threading 基于线程的并行](https://docs.python.org/zh-cn/3/library/threading.html)
 
+这个模块在较低级的模块 _thread 基础上建立较高级的线程接口。
 
+### [multiprocessing 基于进程的并行](https://docs.python.org/zh-cn/3/library/multiprocessing.html)
 
+multiprocessing 是一个用于产生进程的包，具有与 threading 模块相似API。 multiprocessing 包同时提供本地和远程并发，使用子进程代替线程，有效避免 Global Interpreter Lock 带来的影响。因此， multiprocessing 模块允许程序员充分利用机器上的多核。可运行于 Unix 和 Windows 。
+
+multiprocessing 模块还引入了在 threading 模块中没有的API。一个主要的例子就是 Pool 对象，它提供了一种快捷的方法，赋予函数并行化处理一系列输入值的能力，可以将输入数据分配给不同进程处理（数据并行）。
+
+### [concurrent.futures 启动并行任务](https://docs.python.org/zh-cn/3/library/concurrent.futures.html)
+
+concurrent.futures 模块提供异步执行可调用对象高层接口。
+
+异步执行可以由 ThreadPoolExecutor 使用线程或由 ProcessPoolExecutor 使用单独的进程来实现。 两者都是实现抽像类 Executor 定义的接口。
+
+### [subprocess 子进程管理](https://docs.python.org/zh-cn/3/library/subprocess.html)
+
+subprocess 模块允许你生成新的进程，连接它们的输入、输出、错误管道，并且获取它们的返回码。
+
+### [queue 一个同步的队列类](https://docs.python.org/zh-cn/3/library/queue.html)
+
+queue 模块实现了多生产者、多消费者队列。这特别适用于消息必须安全地在多线程间交换的线程编程。模块中的 Queue 类实现了所有所需的锁定语义。
+
+模块实现了三种类型的队列，它们的区别仅仅是条目取回的顺序。在 FIFO 队列中，先添加的任务先取回。在 LIFO 队列中，最近被添加的条目先取回(操作类似一个堆栈)。优先级队列中，条目将保持排序( 使用 heapq 模块 ) 并且最小值的条目第一个返回。
+
+在内部，这三个类型的队列使用锁来临时阻塞竞争线程；然而，它们并未被设计用于线程的重入性处理。
+
+此外，模块实现了一个 "简单的" FIFO 队列类型， SimpleQueue ，这个特殊实现为小功能在交换中提供额外的保障。
+
+### [_thread 底层多线程 API](https://docs.python.org/zh-cn/3/library/_thread.html)
+
+该模块提供了操作多个线程（也被称为 轻量级进程 或 任务）的底层原语 —— 多个控制线程共享全局数据空间。为了处理同步问题，也提供了简单的锁机制（也称为 互斥锁 或 二进制信号）。threading 模块基于该模块提供了更易用的高级多线程 API。
+
+## [网络和进程间通信](https://docs.python.org/zh-cn/3/library/ipc.html)
+
+本章介绍的模块提供了网络和进程间通信的机制。
+
+某些模块仅适用于同一台机器上的两个进程，例如 signal 和 mmap 。 其他模块支持两个或多个进程可用于跨机器通信的网络协议。
+
+### [asyncio 异步 I/O](https://docs.python.org/zh-cn/3/library/asyncio.html)
+
+asyncio 是用来编写 并发 代码的库，使用 async/await 语法。
+
+asyncio 被用作多个提供高性能 Python 异步框架的基础，包括网络和网站服务，数据库连接库，分布式任务队列等等。
+
+asyncio 往往是构建 IO 密集型和高层级 结构化 网络代码的最佳选择。
+
+#### [协程与任务](https://docs.python.org/zh-cn/3/library/asyncio-task.html)
+
+本节将简述用于协程与任务的高层级 API。
+
+#### [Futures](https://docs.python.org/zh-cn/3/library/asyncio-future.html)
+
+Future 对象用来链接 底层回调式代码 和高层异步/等待式代码。
+
+### [socket 底层网络接口](https://docs.python.org/zh-cn/3/library/socket.html)
+
+这个模块提供了访问 BSD 套接字 的接口。在所有现代 Unix 系统、Windows、macOS 和其他一些平台上可用。
+
+注解: 一些行为可能因平台不同而异，因为调用的是操作系统的套接字API。
+
+这个Python接口是用Python的面向对象风格对Unix系统调用和套接字库接口的直译：函数 socket() 返回一个 套接字对象 ，其方法是对各种套接字系统调用的实现。形参类型一般与C接口相比更高级：例如在Python文件 read() 和 write() 操作中，接收操作的缓冲区分配是自动的，发送操作的缓冲区长度是隐式的。
+
+## [互联网数据处理](https://docs.python.org/zh-cn/3/library/netdata.html)
+
+本章介绍了支持处理互联网上常用数据格式的模块。
+
+### [email 电子邮件与 MIME 处理包](https://docs.python.org/zh-cn/3/library/email.html)
+
+该email软件包是用于管理电子邮件的库。它不是专门为将电子邮件发送到SMTP（RFC 2821），NNTP或其他服务器；这些是模块的功能，如 smtplib和nntplib。该email软件包尝试尽可能地符合RFC，以支持RFC 5233和RFC 6532以及与MIME相关的RFC，例如RFC 2045，RFC 2046，RFC 2047，RFC 2183和RFC 2231。
+
+电子邮件软件包的整体结构可以分为三个主要部分，以及控制其他部分行为的第四个部分。
+
+#### [email: 示例](https://docs.python.org/zh-cn/3/library/email.examples.html)
+
+以下是一些如何使用 email 包来读取、写入和发送简单电子邮件以及更复杂的MIME邮件的示例。
+
+### [json JSON 编码和解码器](https://docs.python.org/zh-cn/3/library/json.html)
+
+JSON (JavaScript Object Notation)，由 RFC 7159 (which obsoletes RFC 4627) 和 ECMA-404 指定，是一个受 JavaScript 的对象字面量语法启发的轻量级数据交换格式，尽管它不仅仅是一个严格意义上的 JavaScript 的字集 1。
+
+json 提供了与标准库 marshal 和 pickle 相似的API接口。
+
+### [base64 Base16, Base32, Base64, Base85 数据编码](https://docs.python.org/zh-cn/3/library/base64.html)
+
+此模块提供了将二进制数据编码为可打印的 ASCII 字符以及将这些编码解码回二进制数据的函数。它为 RFC 3548 指定的 Base16, Base32 和 Base64 编码以及已被广泛接受的 Ascii85 和 Base85 编码提供了编码和解码函数。
+
+RFC 3548 编码的目的是使得二进制数据可以作为电子邮件的内容正确地发送，用作 URL 的一部分，或者作为 HTTP POST 请求的一部分。其中的编码算法和 uuencode 程序是不同的。
+
+## [结构化标记处理工具](https://docs.python.org/zh-cn/3/library/markup.html)
+
+Python 支持各种模块，以处理各种形式的结构化数据标记。 这包括使用标准通用标记语言（SGML）和超文本标记语言（HTML）的模块，以及使用可扩展标记语言（XML）的几个接口。
 
 
 
