@@ -620,12 +620,30 @@ distutils 包为将待构建和安装的额外的模块，打包成 Python 安�
 
 此模块为涉及 with 语句的常见任务提供了实用的程序。更多信息请参见 上下文管理器类型 和 with 语句上下文管理器。
 
-### [\__future\__ Future 语句定义](https://docs.python.org/zh-cn/3/library/__future__.html)
+### [__future__ Future 语句定义](https://docs.python.org/zh-cn/3/library/__future__.html)
 
 \__future\__ 是一个真正的模块，这主要有 3 个原因：
 * 避免混淆已有的分析 import 语句并查找 import 的模块的工具。
 * 确保 future 语句 在 2.1 之前的版本运行时至少能抛出 runtime 异常（import __future__ 会失败，因为 2.1 版本之前没有这个模块）。
 * 当引入不兼容的修改时，可以记录其引入的时间以及强制使用的时间。这是一种可执行的文档，并且可以通过 import __future__ 来做程序性的检查。
+
+### [gc 垃圾回收器接口](https://docs.python.org/zh-cn/3/library/gc.html)
+
+此模块提供可选的垃圾回收器的接口，提供的功能包括：关闭收集器、调整收集频率、设置调试选项。它同时提供对回收器找到但是无法释放的不可达对象的访问。由于 Python 使用了带有引用计数的回收器，如果你确定你的程序不会产生循环引用，你可以关闭回收器。可以通过调用 gc.disable() 关闭自动垃圾回收。若要调试一个存在内存泄漏的程序，调用 gc.set_debug(gc.DEBUG_LEAK) ；需要注意的是，它包含 gc.DEBUG_SAVEALL ，使得被垃圾回收的对象会被存放在 gc.garbage 中以待检查。
+
+## [导入模块](https://docs.python.org/zh-cn/3/library/modules.html)
+
+本章中介绍的模块提供了导入其他Python模块和挂钩以自定义导入过程的新方法。
+
+### [importlib import 的实现](https://docs.python.org/zh-cn/3/library/importlib.html)
+
+importlib 包的目的有两个。 第一个目的是在 Python 源代码中提供 import 语句的实现（并且因此而扩展 __import__() 函数）。 这提供了一个可移植到任何 Python 解释器的 import 实现。 相比使用 Python 以外的编程语言实现方式，这一实现更加易于理解。
+
+第二个目的是实现 import 的部分被公开在这个包中，使得用户更容易创建他们自己的自定义对象 (通常被称为 importer) 来参与到导入过程中。
+
+## [Python 语言服务](https://docs.python.org/zh-cn/3/library/language.html)
+
+Python 提供了许多模块来帮助使用 Python 语言。 这些模块支持标记化、解析、语法分析、字节码反汇编以及各种其他工具。
 
 
 
