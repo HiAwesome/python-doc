@@ -309,7 +309,9 @@ glob 模块可根据 Unix 终端所用规则找出所有匹配特定模式的路
 
 本章中描述的模块支持在磁盘上以持久形式存储 Python 数据。 pickle 和 marshal 模块可以将许多 Python 数据类型转换为字节流，然后从字节中重新创建对象。 各种与 DBM 相关的模块支持一系列基于散列的文件格式，这些格式存储字符串到其他字符串的映射。
 
+## [数据压缩和存档](https://docs.python.org/zh-cn/3/library/archiving.html)
 
+本章中描述的模块支持 zlib、gzip、bzip2 和 lzma 数据压缩算法，以及创建 ZIP 和 tar 格式的归档文件。参见由 shutil 模块提供的 归档操作 。
 
 
 
