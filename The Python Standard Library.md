@@ -313,5 +313,9 @@ glob 模块可根据 Unix 终端所用规则找出所有匹配特定模式的路
 
 本章中描述的模块支持 zlib、gzip、bzip2 和 lzma 数据压缩算法，以及创建 ZIP 和 tar 格式的归档文件。参见由 shutil 模块提供的 归档操作 。
 
+## [文件格式](https://docs.python.org/zh-cn/3/library/fileformats.html)
+
+本章中描述的模块解析各种不是标记语言且与电子邮件无关的杂项文件格式。
+
 
 
