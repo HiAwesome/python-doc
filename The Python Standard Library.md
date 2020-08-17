@@ -317,5 +317,13 @@ glob 模块可根据 Unix 终端所用规则找出所有匹配特定模式的路
 
 本章中描述的模块解析各种不是标记语言且与电子邮件无关的杂项文件格式。
 
+### [plistlib 生成与解析 Mac OS X .plist 文件](https://docs.python.org/zh-cn/3/library/plistlib.html)
+
+此模块提供了读写主要用于 Mac OS X 的 "property list" 文件的接口，并同时支持二进制和 XML plist 文件。
+
+property list (.plist) 文件格式是一种简单的序列化格式，它支持一些基本对象类型，例如字典、列表、数字和字符串等。 通常使用一个字典作为最高层级对象。
+
+
+
 
 
