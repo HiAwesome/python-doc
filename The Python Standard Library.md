@@ -343,6 +343,45 @@ secrets 模块可用于生成高加密强度的随机数，适应管理密码、
 
 尽管此模块始终可用，但并非所有平台上都提供所有功能。 此模块中定义的大多数函数是调用了所在平台 C 语言库的同名函数。 因为这些函数的语义因平台而异,所以使用时最好查阅平台相关文档。
 
+### [argparse 命令行选项、参数和子命令解析器](https://docs.python.org/zh-cn/3/library/argparse.html)
+
+argparse 模块可以让人轻松编写用户友好的命令行接口。程序定义它需要的参数，然后 argparse 将弄清如何从 sys.argv 解析出那些参数。 argparse 模块还会自动生成帮助和使用手册，并在用户给程序传入无效参数时报出错误信息。
+
+### [logging Python 的日志记录工具](https://docs.python.org/zh-cn/3/library/logging.html)
+
+这个模块为应用与库实现了灵活的事件日志系统的函数与类。
+
+使用标准库提提供的 logging API 最主要的好处是，所有的 Python 模块都可能参与日志输出，包括你自己的日志消息和第三方模块的日志消息。
+
+这个模块提供许多强大而灵活的功能。如果你对 logging 不太熟悉的话， 掌握它最好的方式就是查看它对应的教程（详见右侧的链接）。
+
+该模块定义的基础类和函数都列在下面。
+* 记录器暴露了应用程序代码直接使用的接口。
+* 处理器将日志记录（由记录器创建）发送到适当的目标。
+* 过滤器提供了更精细的附加功能，用于确定要输出的日志记录。
+* 格式器指定最终输出中日志记录的样式。
+
+### [logging.config 日志记录配置](https://docs.python.org/zh-cn/3/library/logging.config.html)
+
+这一节描述了用于配置 logging 模块的 API。
+
+### [logging.handlers 日志处理](https://docs.python.org/zh-cn/3/library/logging.handlers.html)
+
+这个包提供了以下有用的处理程序。 请注意有三个处理程序类 (StreamHandler, FileHandler 和 NullHandler) 实际上是在 logging 模块本身定义的，但其文档与其他处理程序一同记录在此。
+
+### [ctypes Python 的外部函数库](https://docs.python.org/zh-cn/3/library/ctypes.html)
+
+ctypes 是 Python 的外部函数库。它提供了与 C 兼容的数据类型，并允许调用 DLL 或共享库中的函数。可使用该模块以纯 Python 形式对这些库进行封装。
+
+
+
+
+
+
+
+
+
+
 
 
 
